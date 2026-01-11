@@ -1,10 +1,9 @@
 {
     "name": "Card History Killfeed",
     "package": "card_history_killfeed",
-    "ankiweb_id": "",
-    "author": "Your Name",
+    "author": "FlaccidSnake",
     "version": "1.0.0",
-    "homepage": "",
+    "homepage": "https://github.com/FlaccidSnake/Card-Killfeed",
     "conflicts": [],
     "min_point_version": 50,
     "max_point_version": 0
