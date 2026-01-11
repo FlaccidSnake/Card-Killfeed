@@ -1,0 +1,11 @@
+{
+    "name": "Card History Killfeed",
+    "package": "card_history_killfeed",
+    "ankiweb_id": "",
+    "author": "Your Name",
+    "version": "1.0.0",
+    "homepage": "",
+    "conflicts": [],
+    "min_point_version": 50,
+    "max_point_version": 0
+}
