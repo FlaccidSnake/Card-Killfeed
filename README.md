@@ -21,5 +21,6 @@ Access via **Tools → Card History Killfeed Config...**
 
 - **Corner position**: Choose where the killfeed appears (top-left, top-right, bottom-left, bottom-right)
 - **Maximum lines**: Set how many review entries to display (1-100, default 10)
+- **Feed order (newest entries)**: Set the ordering of the feed with newest at the bottom or at the top
 
 **Note:** When your window is ≤50% of screen width, the killfeed shows only 1 line and centers at the top, pushing card content down. This hopefully makes it not cover up your card content if your window is small.
