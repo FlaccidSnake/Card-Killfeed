@@ -149,12 +149,20 @@ class ReviewHistoryPopup(QWidget):
                 rating_color = self.colors['rating_1'] if ease == 1 else text_color
                 
                 # Build HTML line with proper spacing
-                line = f'<span style="color: {date_color}">{date_str}</span> '
+                line = '<span>'
+                line += f'<span style="color: {date_color}">{date_str}</span> '
                 line += f'<span style="color: {type_color}">{type_str:7}</span> '
                 line += f'<span style="color: {rating_color}">{ease_str:1}</span> '
                 line += f'<span style="color: {text_color}">{ivl_str:>10}</span>'
+                line += '</span>'
                 
                 lines.append(line)
+            
+            # --- THE FIX FOR ORDERING ---
+            # If "Newest at Bottom" is True, we reverse the list 
+            # (since SQL query returns Newest-First)
+            if self.config.get("newest_at_bottom", True):
+                lines.reverse()
             
             self.text_label.setText("<br>".join(lines))
         

@@ -1,1 +1,1 @@
-{"config": {"corner": "top-right", "max_lines": 10}}
+{"config": {"corner": "top-right", "max_lines": 10, "newest_at_bottom": true}}

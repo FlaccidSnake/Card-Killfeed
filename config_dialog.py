@@ -2,7 +2,7 @@
 """
 Card History Killfeed Config Dialog
 """
-from aqt.qt import QDialog, QVBoxLayout, QHBoxLayout, QLabel, QComboBox, QSpinBox, QPushButton, QFrame, QGroupBox
+from aqt.qt import QDialog, QVBoxLayout, QHBoxLayout, QLabel, QComboBox, QSpinBox, QPushButton, QFrame, QGroupBox, QCheckBox
 from aqt import mw
 from aqt.utils import tooltip
 
@@ -17,11 +17,13 @@ class KillfeedConfigDialog(QDialog):
         if config is None:
             config = {
                 "corner": "top-right",
-                "max_lines": 10
+                "max_lines": 10,
+                "newest_at_bottom": True
             }
         
         self.corner = config.get("corner", "top-right")
         self.max_lines = config.get("max_lines", 10)
+        self.newest_at_bottom = config.get("newest_at_bottom", True)
         
         self.setWindowTitle("Card History Killfeed Configuration")
         self.setMinimumWidth(450)
@@ -85,6 +87,17 @@ class KillfeedConfigDialog(QDialog):
         lines_info.setWordWrap(True)
         display_layout.addWidget(lines_info)
         
+        # Order dropdown
+        order_layout = QHBoxLayout()
+        order_label = QLabel("Feed order (newest entries):")
+        self.order_combo = QComboBox()
+        self.order_combo.addItems(["Bottom", "Top"])
+        self.order_combo.setCurrentText("Bottom" if self.newest_at_bottom else "Top")
+        order_layout.addWidget(order_label)
+        order_layout.addWidget(self.order_combo)
+        order_layout.addStretch()
+        display_layout.addLayout(order_layout)
+        
         display_group.setLayout(display_layout)
         layout.addWidget(display_group)
         
@@ -115,6 +128,7 @@ class KillfeedConfigDialog(QDialog):
         
         config["corner"] = self.corner_combo.currentText()
         config["max_lines"] = self.lines_spinbox.value()
+        config["newest_at_bottom"] = (self.order_combo.currentText() == "Bottom")
         
         mw.addonManager.writeConfig(__name__, config)
         

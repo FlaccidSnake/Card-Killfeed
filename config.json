@@ -1,4 +1,5 @@
 {
     "corner": "top-right",
-    "max_lines": 10
+    "max_lines": 10,
+    "newest_at_bottom": true
 }
